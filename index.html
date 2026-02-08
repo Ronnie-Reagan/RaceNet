@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RaceNet</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+  body {
+    background: linear-gradient(135deg, #1f1c2c, #3a0ca3);
+    color: #fff;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  .section {
+    min-height: 69vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 20px;
+    transition: background 1s ease;
+  }
+
+  .card {
+    background: linear-gradient(145deg, #380dad, #31216e);
+    border-radius: 25px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    padding: 40px;
+    max-width: 900px;
+    margin: 0 auto 60px auto;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+  }
+
+  h1, h2, h3 {
+    background: linear-gradient(90deg, #ff6fd8, #6a0dad);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  h1 { font-size: 3em; }
+  h2 { font-size: 2em; }
+  h3 { font-size: 1.5em; }
+
+  p, li {
+    font-size: 1.2em;
+  }
+
+  ul { list-style: none; margin-bottom: 20px; padding-left: 0; }
+
+  ul li {
+    margin-bottom: 15px;
+    padding-left: 20px;
+    position: relative;
+    transition: transform 0.3s, color 0.3s;
+  }
+
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #ffb3ff;
+  }
+
+  a.cta {
+    display: block;
+    text-align: center;
+    font-size: 1.4em;
+    background: linear-gradient(45deg, #8338ec, #3a0ca3);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 15px;
+    text-decoration: none;
+    margin: 30px auto 0 auto;
+    width: fit-content;
+    transition: transform 0.3s, background 0.5s;
+  }
+
+  a.cta:hover {
+    transform: scale(1.05);
+    background: linear-gradient(45deg, #3a0ca3, #8338ec);
+  }
+
+  /* Infinite scroll fade-in effect */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease, transform 1s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- Section 1: App Overview -->
+<div class="section" id="overview">
+  <div class="card fade-in">
+    <h1>RaceNet Concept</h1>
+    <h2>Multiplayer Drag Racing in Real-Life</h2>
+    <p>Experience multiplayer drag racing like never before. Designed for high-accuracy timing, live tracking, and immersive racing vibes inspired by classic street racing films — with a focus on real data and fair competition.</p>
+  </div>
+</div>
+
+<!-- Section 2: Features -->
+<div class="section" id="features">
+  <div class="card fade-in">
+    <h2>Core Features (Planned)</h2>
+    <ul>
+      <li>High-frequency GPS & accelerometer tracking with smoothing and anti-spike logic</li>
+      <li>Background operation: race while phone is in pocket or screen is off</li>
+      <li>Cloud-based anti-cheat system to validate speed and acceleration</li>
+      <li>Multiple race length presets: 1/8 mile, 1/4 mile, 1/2 mile, etc.</li>
+      <li>User profiles with ride photos, “About Me” & “About My Ride” sections</li>
+      <li>Live tracking & timing displays for immersive race feedback</li>
+      <li>Legality-agnostic approach: app does not condone breaking laws; users are responsible</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Section 3: How It Works -->
+<div class="section" id="how-it-works">
+  <div class="card fade-in">
+    <h2>How It Will Work</h2>
+    <ul>
+      <li>Players find each other via a friends list or nearby discovery system</li>
+      <li>Challenge others to a race and set parameters together (distance, type, etc.)</li>
+      <li>Both players “ready up” → countdown starts (visual/TTS) → race begins</li>
+      <li>High-frequency sensor data calculates start reaction, top speed, average speed, and finish times</li>
+      <li>Results are displayed to both racers and optionally uploaded for leaderboard tracking</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Section 4: Experience & Vibe -->
+<div class="section" id="vibe">
+  <div class="card fade-in">
+    <h2>Experience & Vibe</h2>
+    <ul>
+      <li>Inspired by street racing films like 2Fast2Furious, focusing on timing, displays, and data</li>
+      <li>Not about gimmicks: no offset GPS routes or fake overlays — real performance tracking</li>
+      <li>Emphasis on user engagement: profiles, ride details, and multiplayer interaction</li>
+      <li>Dynamic UI with countdowns, race timers, and live leaderboards</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Section 5: Call to Action -->
+<div class="section" id="cta">
+  <div class="card fade-in">
+    <h2>Follow the Development</h2>
+    <p>This app is currently in pre-planning. Stay tuned for updates as we develop high-accuracy, multiplayer drag racing experiences for mobile and web!</p>
+    <a href="https://discord.gg/sNDjYx8MWa" class="cta">Stay Updated</a>
+  </div>
+</div>
+
+<script>
+  // Scroll fade-in effect
+  const faders = document.querySelectorAll('.fade-in');
+
+  const appearOptions = { threshold: 0.2 };
+
+  const appearOnScroll = new IntersectionObserver(function(entries, observer){
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, appearOptions);
+
+  faders.forEach(fader => { appearOnScroll.observe(fader); });
+</script>
+
+</body>
+</html>
