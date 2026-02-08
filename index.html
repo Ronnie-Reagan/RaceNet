@@ -25,10 +25,10 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 60px 20px;
+      padding: 5vh;
       position: relative;
-      background-size: 175%;
-      background-position: center;
+      background-size: 200% 200%;
+      background-position:50%;
     }
 
     /* Overlay gradient on top of background images */
@@ -232,7 +232,7 @@
     function animateParallax() {
       scrollY += (targetY - scrollY) * 0.1; // 0.1 = smoothing factor
       document.querySelectorAll('.section').forEach(sec => {
-        const speed = 0.5;
+        const speed = 0.25;
         const offset = scrollY * speed;
         sec.style.backgroundPosition = `center ${-offset}px`;
       });
